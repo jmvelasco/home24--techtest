@@ -28,11 +28,22 @@ ul {
 
 .item-name {
     width: auto;
-    text-align: left;
+    text-align: right;
+}
+
+.item-title {
+    width: auto;
+    text-align: center;
+}
+
+.item-total {
+    width: auto;
+    text-align: right;
+    font-weight: bold;
 }
 
 .item-quantity {
-    text-align: right;
+    text-align: center;
 }
 
 .product-container {

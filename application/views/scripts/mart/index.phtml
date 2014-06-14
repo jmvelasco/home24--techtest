@@ -1,13 +1,15 @@
 <h2>Home24 :: testMart</h2>
 <table>
     <thead>
-        <tr>
+        <tr style="border-bottom: 1px dashed #000000">
+            <th class="item-title">Product Name</th>
+            <th class="item-title">P.P.U.</th>
             <th class="item-quantity">Quantity</th>
-            <th class="item-name">Product Name</th>
-            <th class="item-name">Unitary Price</th>
+            <th class="item-title">Price</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
+<?php $total = 0; ?>
 <?php foreach($this->result as $martItem): ?>
     <?php
     $removeItemUrl = $this->url(
@@ -20,12 +22,24 @@
         true);
     ?>
 <tr>
-    <td class="item-quantity"><?php echo $martItem['quantity']; ?></td>
+    <?php
+        $totalLine = ((int)$martItem['price'] * (int)$martItem['quantity']);
+        $total = $total + $totalLine;
+    ?>
+
     <td class="item-name"><?php echo $martItem['name']; ?></td>
     <td class="item-price"><?php echo $martItem['price']; ?></td>
+    <td class="item-quantity"><?php echo $martItem['quantity']; ?></td>
+    <td class="item-price"><?php echo money_format('%i', $totalLine); ?></td>
     <td><a href="<?php echo $removeItemUrl?>">Remove</a></td>
 </tr>
 <?php endforeach; ?>
+    <tr style="border-top: 1px dashed #000000">
+        <td colspan="2" class="item-total">Total:</td>
+        <td>&nbsp;</td>
+        <td class="item-price"><?php echo money_format('%i', $total)?></td>
+        <td>&nbsp;</td>
+    </tr>
 </table>
 <?php
 $listUrl = $this->url(
