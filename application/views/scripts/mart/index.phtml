@@ -1,0 +1,38 @@
+<h2>home24 :: testMart</h2>
+<table>
+    <tbody>
+        <th class="item-quantity">Quantity</th>
+        <th class="item-name">Product Name</th>
+        <th class="item-name">Unitary Price</th>
+        <th>&nbsp;</th>
+    </tbody>
+<?php foreach($this->result as $martItem): ?>
+    <?php
+    $removeItemUrl = $this->url(
+        array(
+            'controller' => 'mart',
+            'action'     => 'delete',
+            'martID'     => $martItem['id'],
+        ),
+        'default',
+        true);
+    ?>
+<tr>
+    <td class="item-quantity"><?php echo $martItem['quantity']; ?></td>
+    <td class="item-name"><?php echo $martItem['name']; ?></td>
+    <td class="item-price"><?php echo $martItem['price']; ?></td>
+    <td><a href="<?php echo $removeItemUrl?>">Remove</a></td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php
+$listUrl = $this->url(
+    array(
+    'controller' => 'index',
+    'action'     => 'index',
+    ),
+    'default',
+    true);
+?>
+<br />
+Return to <a href="<?php echo $listUrl?>">Product List</a>

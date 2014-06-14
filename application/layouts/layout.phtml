@@ -1,0 +1,16 @@
+<?php echo $this->doctype() . PHP_EOL; ?>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>home24 :: techTest</title>
+      <?php echo $this->headLink()->appendStylesheet('/css/reset.css') . PHP_EOL;?>
+      <?php echo $this->headLink()->appendStylesheet('/css/style.css') . PHP_EOL;?>
+      <?php echo $this->headScript()->appendFile('/js/jquery.min.js') . PHP_EOL;?>
+
+  </head>
+  <body>
+    <?php
+    echo $this->layout()->content;
+    ?>
+  </body>
+</html>

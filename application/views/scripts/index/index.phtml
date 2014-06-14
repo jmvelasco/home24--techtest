@@ -1,0 +1,53 @@
+<h3>List of Products</h3>
+<div id='notify'></div>
+<a href="<?php echo $this->url(
+    array(
+        'controller' => 'index',
+        'action'     => 'new',
+    ),
+    'default',
+    true) ?>">New Customer</a>
+ |
+<a href="<?php echo $this->url(
+    array(
+        'controller' => 'mart',
+        'action'     => 'index',
+    ),
+    'default',
+    true) ?>">Show Mart</a>
+
+<?php foreach($this->result as $product): ?>
+    <div class="product-container">
+        <span style="float:right">
+            <span class="item-price"><?php echo money_format('%i', $product['price']); ?></span>
+            <br />
+            <a href="<?php echo $this->url(
+                array(
+                    'controller' => 'index',
+                    'action'     => 'details',
+                    'productID'  => $product['productID'],
+                ),
+                'default',
+                true) ?>">See Details</a>
+            <br />
+            <a href="javascript:void(0);" class="add-item" data-productID="<?php echo $product['productID']?>">Add to Basket</a>
+        </span>
+        <img src="/img/<?php echo $product['thumbnail']; ?>" alt="<?php echo $product['productCode']; ?>">
+        <br />
+        <?php echo $product['name']; ?>
+
+    </div>
+<?php endforeach; ?>
+
+<script type="text/javascript">
+    // Send AJAX request when clicking Add to Basket link
+    $('.add-item').click(function(e) {
+        // Get the product id
+        var productID = this.getAttribute('data-productID');
+        var ajaxUrl= "/mart/add/productID/" + productID;
+
+        // Call the action for adding the item to the basket
+        $("#notify").load(ajaxUrl, function () {});
+        $("#notify").css('display', 'block');
+    });
+</script>

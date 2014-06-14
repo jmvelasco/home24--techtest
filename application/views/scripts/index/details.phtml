@@ -1,0 +1,24 @@
+<?php
+$product = $this->result;
+$listUrl = $this->url(
+    array(
+        'controller' => 'index',
+        'action'     => 'index',
+    ),
+    'default',
+    true);
+?>
+<div style="padding: 20px;">
+<h2><?php echo $product['name']; ?></h2>
+Return to <a href="<?php echo $listUrl?>">Product List</a>
+<br />
+<img src="/img/<?php echo $product['image']; ?>" alt="<?php echo $product['productCode']; ?>">
+<br />
+
+<b>Price:</b>&nbsp;<span class="item-price"><?php echo money_format('%i', $product['price']); ?></span>
+<br />
+<b>Description:</b>
+<p style="width: 480px;clear: both;"><?php echo $product['description']; ?></p>
+</div>
+
+
