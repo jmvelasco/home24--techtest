@@ -1,11 +1,13 @@
-<h2>home24 :: testMart</h2>
+<h2>Home24 :: testMart</h2>
 <table>
-    <tbody>
-        <th class="item-quantity">Quantity</th>
-        <th class="item-name">Product Name</th>
-        <th class="item-name">Unitary Price</th>
-        <th>&nbsp;</th>
-    </tbody>
+    <thead>
+        <tr>
+            <th class="item-quantity">Quantity</th>
+            <th class="item-name">Product Name</th>
+            <th class="item-name">Unitary Price</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
 <?php foreach($this->result as $martItem): ?>
     <?php
     $removeItemUrl = $this->url(
